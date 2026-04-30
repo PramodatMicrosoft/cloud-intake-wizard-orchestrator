@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.  
 This format follows [Keep a Changelog](https://keepachangelog.com/) and adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.1.0] - 2026-04-30
+### Added
+- **JDCP Cloud Intake Wizard agent strategy** (forked from `gpt-rag-orchestrator` v2.6.2):
+  - New `IntakeWizardStrategy` class (`src/strategies/intake_wizard_strategy.py`) extending `BaseAgentStrategy`, built on Semantic Kernel `ChatCompletionAgent` with `FunctionChoiceBehavior.Auto()`.
+  - Registered `INTAKE_WIZARD = "intake_wizard"` in `AgentStrategies` enum and wired into `AgentStrategyFactory`.
+  - New SK plugins under `src/plugins/intake/`: `IntakeFormPlugin` (Cosmos `intakeRequests` CRUD; generates `CIW-YYYYMMDD-XXXXXX` tracking IDs), `RecommendationPlugin`, `FaqPlugin`.
+  - System prompt + skills manifest under `src/prompts/intake_wizard/` covering naive/medium/technical user flows, completeness evaluation, and next-action determination.
+  - Seed `data/intake-fields.json` (14 fields with mandatory flags per environment tier).
+
 ## [v2.6.2] - 2026-04-18
 ### Fixed
 - **OpenTelemetry version pinning:** Pinned `azure-monitor-opentelemetry==1.8.7`, `azure-monitor-opentelemetry-exporter==1.0.0b49`, `opentelemetry-instrumentation-httpx==0.61b0`, and `opentelemetry-instrumentation-fastapi==0.61b0` in `requirements.txt`. Unpinned versions caused non-deterministic Docker builds where an older exporter (referencing the removed `LogData` class) could be paired with `opentelemetry-sdk>=1.39.0`, crashing the container on startup with `ImportError: cannot import name 'LogData' from 'opentelemetry.sdk._logs'`. ([#445](https://github.com/Azure/GPT-RAG/issues/445))
