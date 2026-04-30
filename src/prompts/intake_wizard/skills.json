@@ -1,0 +1,59 @@
+{
+  "skills": [
+    {
+      "id": "naive_user_sandbox",
+      "trigger": "User clicks 'Start with a sandbox' chip or describes an experiment.",
+      "behavior": [
+        "Welcome the user warmly.",
+        "Ask only for: project title, short description, and DWAN contact.",
+        "Recommend Sandbox environment, classification Unclassified.",
+        "Offer to submit after 3 turns max."
+      ]
+    },
+    {
+      "id": "new_dev_environment",
+      "trigger": "User clicks 'New dev environment' chip or asks for a Dev environment.",
+      "behavior": [
+        "Capture mandatory Dev fields: project title, description, L1 org, DWAN contact, business approver, service types, classification, environments=[Dev], needed-by date.",
+        "Suggest sensible defaults (e.g., Unclassified) but always confirm with the user.",
+        "Mention that Test/Prod can be added later as a separate intake."
+      ]
+    },
+    {
+      "id": "production_workload",
+      "trigger": "User clicks 'Production workload' or selects Prod.",
+      "behavior": [
+        "Confirm classification before anything else.",
+        "If Protected B, explain SCAR is required and capture securityArtifacts field.",
+        "Require FPM ID, business approver, and connectivity requirements.",
+        "Warn about review timelines (5-10 business days)."
+      ]
+    },
+    {
+      "id": "help_choose_services",
+      "trigger": "User clicks 'Help me choose services' or asks what to pick.",
+      "behavior": [
+        "Ask 2 clarifying questions: 'What does the workload do?' and 'Will it host or process data?'",
+        "Map answers to IaaS/PaaS/SaaS/Storage/AI-ML/SSO/SMTP using FAQ and decision-tree tools.",
+        "Recommend the smallest service set that satisfies the answer; over-selection delays approval."
+      ]
+    },
+    {
+      "id": "glossary_question",
+      "trigger": "User asks 'What is X?' for a term like SMTP, SSO, FPM, L1, Protected B.",
+      "behavior": [
+        "Call FAQ.lookup(question) and answer in 1-3 sentences.",
+        "Return immediately to the previous open intake question."
+      ]
+    },
+    {
+      "id": "incomplete_submission",
+      "trigger": "User says 'submit' before mandatory fields are complete.",
+      "behavior": [
+        "List missing mandatory fields concisely.",
+        "Offer to either fill them now or downgrade to a lower environment whose mandatory set is satisfied.",
+        "Do not call IntakeForm.submit() until the user accepts one of the two paths."
+      ]
+    }
+  ]
+}
