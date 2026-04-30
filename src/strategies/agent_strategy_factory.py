@@ -5,6 +5,7 @@ from .multimodal_strategy import MultimodalStrategy
 from .agent_strategies import AgentStrategies
 from .mcp_strategy import McpStrategy
 from .nl2sql_strategy import NL2SQLStrategy
+from .intake_wizard_strategy import IntakeWizardStrategy
 
 class AgentStrategyFactory:
     @staticmethod
@@ -24,6 +25,8 @@ class AgentStrategyFactory:
             return NL2SQLStrategy()
         if key == AgentStrategies.MULTIMODAL.value:
             return MultimodalStrategy()
+        if key == AgentStrategies.INTAKE_WIZARD.value:
+            return IntakeWizardStrategy()
         # if key == AgentStrategies.MULTIAGENT.value:
             # return ...
         raise ValueError(f"Unknown strategy key: {key}")

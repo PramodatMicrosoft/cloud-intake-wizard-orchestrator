@@ -10,3 +10,4 @@ class AgentStrategies(Enum):
     MAF_LITE           = "maf_lite"
     MULTIMODAL         = "multimodal"
     NL2SQL             = "nl2sql"
+    INTAKE_WIZARD      = "intake_wizard"

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "fld-project-title",
+    "fieldName": "projectTitle",
+    "displayName": "Project Title",
+    "description": "Short, descriptive name for the workload.",
+    "fieldType": "string",
+    "section": "Project",
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory",
+    "examples": ["Logistics Forecasting Pilot", "HR Self-Service Portal"],
+    "helpText": "Use a name your team and JDCP can recognize at a glance."
+  },
+  {
+    "id": "fld-project-description",
+    "fieldName": "projectDescription",
+    "displayName": "Project Description",
+    "description": "What the workload does and why it is being onboarded.",
+    "fieldType": "text",
+    "section": "Project",
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory",
+    "helpText": "Include the business problem, target users, and any sensitive data the workload will handle."
+  },
+  {
+    "id": "fld-fpm-id",
+    "fieldName": "fpmId",
+    "displayName": "FPM ID",
+    "description": "Functional Project Management identifier (if applicable).",
+    "fieldType": "string",
+    "section": "Project",
+    "mandatorySandbox": false, "mandatoryDev": false, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "good-to-have",
+    "examples": ["FPM-2025-0421"],
+    "helpText": "Leave blank for sandbox or early experimentation."
+  },
+  {
+    "id": "fld-cloud-provider",
+    "fieldName": "cloudProvider",
+    "displayName": "Target Cloud Provider",
+    "fieldType": "enum",
+    "section": "Project",
+    "allowedValues": ["Azure", "AWS", "GCP"],
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory"
+  },
+  {
+    "id": "fld-org-l1",
+    "fieldName": "organizationL1",
+    "displayName": "Organization (L1)",
+    "fieldType": "string",
+    "section": "Organization",
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory"
+  },
+  {
+    "id": "fld-org-l2-l4",
+    "fieldName": "organizationL2L4",
+    "displayName": "Organization (L2 / L3 / L4)",
+    "fieldType": "string",
+    "section": "Organization",
+    "mandatorySandbox": false, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "good-to-have"
+  },
+  {
+    "id": "fld-dwan-contact",
+    "fieldName": "dwanContact",
+    "displayName": "DWAN Contact (Email)",
+    "fieldType": "email",
+    "section": "Organization",
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory"
+  },
+  {
+    "id": "fld-business-approver",
+    "fieldName": "businessApprover",
+    "displayName": "Business Approver (Email)",
+    "fieldType": "email",
+    "section": "Organization",
+    "mandatorySandbox": false, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory"
+  },
+  {
+    "id": "fld-service-types",
+    "fieldName": "serviceTypes",
+    "displayName": "Required Service Types",
+    "fieldType": "multi-enum",
+    "section": "Services",
+    "allowedValues": ["IaaS", "PaaS", "SaaS", "Storage", "AI/ML", "SSO", "SMTP"],
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory"
+  },
+  {
+    "id": "fld-data-classification",
+    "fieldName": "dataClassification",
+    "displayName": "Data Classification",
+    "fieldType": "enum",
+    "section": "Security",
+    "allowedValues": ["Unclassified", "Protected A", "Protected B"],
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory"
+  },
+  {
+    "id": "fld-security-artifacts",
+    "fieldName": "securityArtifacts",
+    "displayName": "Security Artifacts (SCAR / SA&A status)",
+    "fieldType": "text",
+    "section": "Security",
+    "mandatorySandbox": false, "mandatoryDev": false, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory",
+    "helpText": "Indicate whether SCAR/SA&A documentation exists or is in progress."
+  },
+  {
+    "id": "fld-connectivity",
+    "fieldName": "connectivityRequirements",
+    "displayName": "Connectivity Requirements",
+    "fieldType": "text",
+    "section": "Security",
+    "mandatorySandbox": false, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "good-to-have",
+    "examples": ["Internet egress only", "DWAN VPN", "Private peering to existing VNet"]
+  },
+  {
+    "id": "fld-environments",
+    "fieldName": "requestedEnvironments",
+    "displayName": "Requested Environments",
+    "fieldType": "multi-enum",
+    "section": "Environments",
+    "allowedValues": ["Sandbox", "Dev", "Test", "Staging", "Prod"],
+    "mandatorySandbox": true, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "mandatory"
+  },
+  {
+    "id": "fld-needed-by",
+    "fieldName": "neededByDate",
+    "displayName": "Needed-by Date",
+    "fieldType": "date",
+    "section": "Environments",
+    "mandatorySandbox": false, "mandatoryDev": true, "mandatoryTest": true, "mandatoryStaging": true, "mandatoryProd": true,
+    "importance": "good-to-have"
+  }
+]
